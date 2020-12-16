@@ -22,7 +22,7 @@ setInterval(() => {
   const msgs = document.querySelectorAll('.chat-line__message');
   msgs.forEach(msg => {
     const authorEl = msg.querySelector('.chat-author__display-name');
-    if (usernames.includes(authorEl?.innerText)) {
+    if (usernames.includes(authorEl?.innerText.toLowerCase())) {
       msg.remove();
     }
   });
