@@ -10,7 +10,7 @@ jobs:
       FF_APP_ID: "{6b982795-4e75-4bc0-a1d8-616f4eb39970}"
     steps:
     - uses: actions/checkout@v2
-    - run: git archive -o package.zip HEAD:src
+    - run: git archive -o package.zip HEAD
     - uses: trmcnvn/chrome-addon@v2
       with:
         extension: ${{ env.CHROME_APP_ID }}
@@ -22,6 +22,6 @@ jobs:
       with:
         uuid: "${{ env.FF_APP_ID }}"
         xpi: package.zip
-        manifest: src/manifest.json
+        manifest: ./manifest.json
         api-key: ${{ secrets.FF_JWT_ISSUER }}
         api-secret: ${{ secrets.FF_JWT_SECRET }}
