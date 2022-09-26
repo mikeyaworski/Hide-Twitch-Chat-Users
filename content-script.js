@@ -17,6 +17,8 @@ chrome.storage.onChanged.addListener(res => {
   if (res.usernames) usernames = res.usernames.newValue;
 });
 
+// Alternatively, we can hide the messages by default and only show them if the username
+// is found to not be one of the hidden ones
 setInterval(() => {
   if (!hide) return;
   const msgs = document.querySelectorAll('.chat-line__message');
