@@ -3,6 +3,11 @@
   "description": "Enter the names of usernames you would like to hide messages from in Twitch.tv chats (split by whitespace and/or commas).",
   "version": "2.0.0",
   "manifest_version": 3,
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{6b982795-4e75-4bc0-a1d8-616f4eb39970}"
+    }
+  },
   "icons": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" },
   "action": {
     "default_popup": "popup.html"
