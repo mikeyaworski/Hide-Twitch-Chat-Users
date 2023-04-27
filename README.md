@@ -10,4 +10,8 @@ Check the "hide" checkbox in order for this to take effect. On all Twitch pages,
 
 If you make any changes to the usernames or the checkbox, refresh the webpage for them to take effect.
 
-https://chrome.google.com/webstore/detail/hide-twitch-chat-users/fcijjhjjaiacddgmgcmlhoabkhmmfiib
+## Install Links
+
+Chrome: https://chrome.google.com/webstore/detail/hide-twitch-chat-users/fcijjhjjaiacddgmgcmlhoabkhmmfiib
+
+Firefox: https://addons.mozilla.org/en-CA/firefox/addon/hide-twitch-chat-users/
