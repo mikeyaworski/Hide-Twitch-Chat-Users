@@ -9,3 +9,5 @@ Click on the icon in your chrome menu to edit settings. Enter the names of usern
 Check the "hide" checkbox in order for this to take effect. On all Twitch pages, a script will run every 100 milliseconds to hide all messages in chats from the usernames you wrote down.
 
 If you make any changes to the usernames or the checkbox, refresh the webpage for them to take effect.
+
+https://chrome.google.com/webstore/detail/hide-twitch-chat-users/fcijjhjjaiacddgmgcmlhoabkhmmfiib
