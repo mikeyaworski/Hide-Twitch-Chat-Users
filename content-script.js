@@ -25,7 +25,7 @@ setInterval(() => {
   msgs.forEach(msg => {
     const authorEl = msg.querySelector('.chat-author__display-name');
     if (usernames.includes(authorEl?.innerText.toLowerCase())) {
-      msg.remove();
+      msg.style.display = 'none';
     }
   });
 }, 100);
