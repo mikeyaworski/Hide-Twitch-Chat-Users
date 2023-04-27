@@ -14,7 +14,7 @@ chrome.storage.sync.get(['hide', 'usernames'], res => {
 chrome.storage.onChanged.addListener(res => {
   if (chrome.runtime.lastError) return;
   if (res.hide) hide = res.hide.newValue;
-  if (res.usernames) usernames = res.usernames.newValue;
+  if (res.usernames) usernames = parseUsernamesStr(res.usernames.newValue);
 });
 
 // Alternatively, we can hide the messages by default and only show them if the username
