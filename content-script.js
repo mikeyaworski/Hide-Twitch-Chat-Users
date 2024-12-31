@@ -21,9 +21,9 @@ chrome.storage.onChanged.addListener(res => {
 // is found to not be one of the hidden ones
 setInterval(() => {
   if (!hide) return;
-  const msgs = document.querySelectorAll('.chat-line__message');
+  const msgs = document.querySelectorAll('.chat-line__message, .seventv-message');
   msgs.forEach(msg => {
-    const authorEl = msg.querySelector('.chat-author__display-name');
+    const authorEl = msg.querySelector('.chat-author__display-name, .seventv-chat-user-username');
     if (usernames.includes(authorEl?.innerText.toLowerCase())) {
       msg.style.display = 'none';
     }
