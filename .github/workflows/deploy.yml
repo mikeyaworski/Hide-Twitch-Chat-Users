@@ -4,6 +4,7 @@ on:
     branches: [master]
 jobs:
   deploy:
+    if: startsWith(github.event.head_commit.message, 'chore(release):')
     runs-on: ubuntu-latest
     env:
       CHROME_APP_ID: fcijjhjjaiacddgmgcmlhoabkhmmfiib
