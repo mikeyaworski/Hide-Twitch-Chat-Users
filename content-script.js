@@ -27,5 +27,22 @@ setInterval(() => {
     if (usernames.includes(authorEl?.innerText.toLowerCase())) {
       msg.style.display = 'none';
     }
+    // Vanilla Twitch
+    const replyTo = msg.getAttribute('aria-label')?.match(/Replying to ([^,]+)/)?.[1];
+    if (replyTo && usernames.includes(replyTo.toLowerCase())) {
+      const replyToEl = msg.querySelector('p[title^=Replying]') || msg.querySelector('p[class^=CoreText]');
+      if (replyToEl) {
+        replyToEl.style.display = 'none';
+      }
+    }
+    // 7TV
+    const replyToMessageEl = msg.querySelector('.seventv-reply-message-part');
+    if (replyToMessageEl) {
+      const replyTo = replyToMessageEl.innerText?.toLowerCase().match(/replying to @([^:]+)/)?.[1];
+      if (usernames.includes(replyTo.toLowerCase())) {
+        const replyPart = msg.querySelector('.seventv-reply-part');
+        if (replyPart) replyPart.style.display = 'none';
+      }
+    }
   });
 }, 100);
