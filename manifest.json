@@ -1,7 +1,7 @@
 {
   "name": "Hide Twitch Chat Users",
   "description": "Enter the names of usernames you would like to hide messages from in Twitch.tv chats (split by whitespace and/or commas).",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "manifest_version": 3,
   "browser_specific_settings": {
     "gecko": {
