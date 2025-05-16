@@ -17,6 +17,15 @@ chrome.storage.onChanged.addListener(res => {
   if (res.usernames) usernames = parseUsernamesStr(res.usernames.newValue);
 });
 
+function filterViewerList() {
+  const viewerListButtons = document.querySelectorAll('#community-tab-content .tw-link');
+  viewerListButtons.forEach(btn => {
+    if (usernames.includes(btn.innerText.toLowerCase())) {
+      btn.parentElement.style.display = 'none';
+    }
+  });
+}
+
 // Alternatively, we can hide the messages by default and only show them if the username
 // is found to not be one of the hidden ones
 setInterval(() => {
@@ -45,4 +54,5 @@ setInterval(() => {
       }
     }
   });
+  filterViewerList();
 }, 100);
