@@ -6,12 +6,25 @@ chrome.storage.sync.get(['usernames', 'hide', 'hideMentions'], ({ hide, username
   if (usernames != null) document.getElementById('usernames').value = usernames;
 });
 
-function saveChanges() {
+// AI-generated
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+const saveChanges = debounce(() => {
   const usernames = document.getElementById('usernames').value;
   const hide = document.getElementById('hide').checked;
   const hideMentions = document.getElementById('hide-mentions').checked;
   chrome.storage.sync.set({ usernames, hide, hideMentions });
-}
+}, 500);
 
 document.getElementById('usernames').addEventListener('input', saveChanges);
 document.getElementById('hide').addEventListener('click', saveChanges);
