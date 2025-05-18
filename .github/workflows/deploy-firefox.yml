@@ -7,18 +7,10 @@ jobs:
     if: startsWith(github.event.head_commit.message, 'chore(release):')
     runs-on: ubuntu-latest
     env:
-      CHROME_APP_ID: fcijjhjjaiacddgmgcmlhoabkhmmfiib
       FF_APP_ID: "{6b982795-4e75-4bc0-a1d8-616f4eb39970}"
     steps:
     - uses: actions/checkout@v2
     - run: git archive -o package.zip HEAD
-    - uses: trmcnvn/chrome-addon@v2
-      with:
-        extension: ${{ env.CHROME_APP_ID }}
-        zip: package.zip
-        client-id: ${{ secrets.CHROME_CLIENT_ID }}
-        client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
-        refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
     - uses: trmcnvn/firefox-addon@v1
       with:
         uuid: "${{ env.FF_APP_ID }}"
