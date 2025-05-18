@@ -23,7 +23,8 @@ function generateStyleSheet() {
   if (!hide) return '';
   return usernames.map(username => {
     const styles = [
-      `.chat-line__message[data-a-user="${username}"] {
+      `.chat-line__message[data-a-user="${username}" i],
+       .chat-line__message[data-user="${username}" i] {
         display: none !important;
       }`,
       // Viewer List
@@ -32,10 +33,15 @@ function generateStyleSheet() {
           display: none !important;
         }`,
     ];
+    // [FFZ] This does not target mentions of a user in a reply line if the message being replied to is from the logged-in user.
+    //       This is because the DOM is different and the <p> element does not have the title attribute.
+    //       This is an odd edge case that is not worth using JS to handle.
     if (hideMentions) {
       // The DOM differs depending on if the reply/mention is of an arbitrary user vs the broadcaster
       styles.push(`
-        .chat-line__message-container > div:has( p[title~="@${username}" i]) {
+        .chat-line__message-container > div:has( p[title~="@${username}" i]),
+        .chat-line__message-container > div:has( p[title~="@${username}:" i]),
+        .chat-line__message:has( .chat-line__message-mention[data-login="${username}" i]) {
           display: none !important;
         }
         .chat-line__message[aria-label~="@${username}" i],
