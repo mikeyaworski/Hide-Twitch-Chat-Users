@@ -60,12 +60,15 @@ function getTextContainsBlockedUserMention(text) {
 }
 
 // The DOM for 7TV is not friendly to CSS selectors, so we need to use JS
+// Some FFZ elements are not friendly to CSS selectors either, so we need to use JS for those too
 function pollDom() {
   if (intervalId != null) clearInterval(intervalId);
   intervalId = setInterval(() => {
     if (!hide) return;
-    const msgs = document.querySelectorAll('.seventv-message');
-    msgs.forEach(msg => {
+
+    // 7TV
+    const sevenTvMsgs = document.querySelectorAll('.seventv-message');
+    sevenTvMsgs.forEach(msg => {
       const authorEl = msg.querySelector('.seventv-chat-user-username');
       if (usernames.includes(authorEl?.innerText.toLowerCase())) {
         msg.style.display = 'none';
@@ -88,6 +91,20 @@ function pollDom() {
         }
       }
     });
+
+    // FFZ
+    if (hideMentions) {
+      const ffzMsgs = document.querySelectorAll('.chat-line__message');
+      ffzMsgs.forEach(msg => {
+        const replyEl = msg.querySelector('p[class^=CoreText]');
+        if (replyEl) {
+          const containsBlockedUser = getTextContainsBlockedUserMention(replyEl.innerText);
+          if (containsBlockedUser) {
+            replyEl.parentElement.parentElement.style.setProperty('display', 'none', 'important');
+          }
+        }
+      });
+    }
   }, 100);
 }
 
